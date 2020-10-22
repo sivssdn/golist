@@ -13,5 +13,5 @@ func (list *Array) Filter(condition func(x interface{}) bool) interface{} {
 			result = reflect.Append(result, data.Index(i))
 		}
 	}
-	return result
+	return result.Interface()
 }

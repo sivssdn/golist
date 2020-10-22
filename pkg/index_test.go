@@ -14,7 +14,7 @@ type testTable struct {
 // go tool cover -func=c.out
 //go tool cover -html=c.out -o coverage.htm
 
-var stringData []testTable = []testTable{
+var stringData = []testTable{
 	{
 		name:     "string present in list",
 		values:   []string{"e1", "e2", "e3"},
