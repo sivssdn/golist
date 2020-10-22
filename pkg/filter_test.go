@@ -32,7 +32,7 @@ func TestFilter(t *testing.T) {
 		var testArray Array = Array{testCond.input}
 		t.Run(testCond.name, func(t *testing.T) {
 			if !reflect.DeepEqual(testCond.expected, testArray.Filter(testCond.filterFunc)) {
-				t.Fatalf("Test failed")
+				t.Fatal("Filter Test failed")
 			}
 		})
 	}
@@ -43,7 +43,7 @@ func BenchmarkFilter(b *testing.B) {
 	var testArray Array = Array{filterStub[0].input}
 	for i := 0; i < b.N; i++ {
 		if !reflect.DeepEqual(filterStub[0].expected, testArray.Filter(filterStub[0].filterFunc)) {
-			b.Fatalf("Test failed")
+			b.Fatal("Filter Benchmark Test failed")
 		}
 	}
 }
