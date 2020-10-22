@@ -35,7 +35,7 @@ var stringData = []testTable{
 	},
 }
 
-// go test -run '' -bench=.
+// go test -v -run '' -bench=.
 func TestIndexOf(t *testing.T) {
 	for _, testCond := range stringData {
 		t.Run(testCond.name, func(t *testing.T) {

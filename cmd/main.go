@@ -3,27 +3,31 @@ package main
 import (
 	"fmt"
 
-	p "github.com/sivssdn/collections/pkg"
+	p "github.com/sivssdn/golist/pkg"
 )
 
 type Array = p.Array
 
 func main() {
-	var testIndex Array = Array{[]string{"e1", "e2", "e32", "e14"}}
-	fmt.Println(testIndex.IndexOf("e2"))
-
+	var test1 Array = Array{[]string{"e1", "e2", "e32", "e14"}}
+	//indexOf example
+	fmt.Println(test1.IndexOf("e2"))
 	//filter example
-	fmt.Println(testIndex.Filter(func(i interface{}) bool {
+	fmt.Println(test1.Filter(func(i interface{}) bool {
 		return len(i.(string)) > 2
 	}))
+	//equals example
+	fmt.Println(test1.Equals([]string{"e1", "e2", "e14"}))
 
-	testIndex = Array{[]int{1, 12, 300, 50}}
-	fmt.Println(testIndex.IndexOf(50))
-
+	test2 := Array{[]int{1, 12, 300, 50}}
+	//indexOf example
+	fmt.Println(test2.IndexOf(50))
 	//filter example
-	fmt.Println(testIndex.Filter(func(i interface{}) bool {
+	fmt.Println(test2.Filter(func(i interface{}) bool {
 		return i.(int)%2 == 0
 	}))
+	//equals example
+	fmt.Println(test2.Equals([]int{1, 12, 300, 50}))
 }
 
 //TODO:: Implement with generics

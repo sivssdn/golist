@@ -1,6 +1,11 @@
 package pkg
 
-// func (list *Array) IsEqual(compareTo interface{}) bool {
-// 	compare := reflect.ValueOf(compareTo)
+import "reflect"
 
-// }
+//Equals uses reflec.DeepEqual to check equality of two slices. Only development over reflect.DeepEquals by this function is syntax
+func (list *Array) Equals(compareTo interface{}) bool {
+	if reflect.DeepEqual(list.Value, compareTo) {
+		return true
+	}
+	return false
+}

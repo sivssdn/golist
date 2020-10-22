@@ -1,3 +1,3 @@
-module github.com/sivssdn/collections
+module github.com/sivssdn/golist
 
 go 1.15
