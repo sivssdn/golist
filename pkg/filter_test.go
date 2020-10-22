@@ -19,15 +19,31 @@ var filterStub = []testFilterStruct{
 		expected:   []int{6, 4, 2},
 		filterFunc: func(i interface{}) bool { return i.(int)%2 == 0 },
 	},
+	{
+		name:       "string length greater than 2",
+		input:      []string{"1, 2, 3, 4", "he", "lo", "there"},
+		expected:   []string{"there", "1, 2, 3, 4"},
+		filterFunc: func(i interface{}) bool { return len(i.(string)) > 2 },
+	},
 }
 
 func TestFilter(t *testing.T) {
 	for _, testCond := range filterStub {
 		var testArray Array = Array{testCond.input}
 		t.Run(testCond.name, func(t *testing.T) {
-			if testCond.expected != testArray.Filter(testCond.filterFunc) {
-				t.Fatalf("Test failed %v %v %v %v", testArray.Filter(testCond.filterFunc), testCond.expected, reflect.TypeOf(testCond.expected), reflect.TypeOf(testArray.Filter(testCond.filterFunc)))
+			if !reflect.DeepEqual(testCond.expected, testArray.Filter(testCond.filterFunc)) {
+				t.Fatalf("Test failed")
 			}
 		})
+	}
+}
+
+//benchmarking only int input
+func BenchmarkFilter(b *testing.B) {
+	var testArray Array = Array{filterStub[0].input}
+	for i := 0; i < b.N; i++ {
+		if !reflect.DeepEqual(filterStub[0].expected, testArray.Filter(filterStub[0].filterFunc)) {
+			b.Fatalf("Test failed")
+		}
 	}
 }
