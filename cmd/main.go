@@ -13,6 +13,7 @@ func main() {
 	var test1 Array = Array{[]string{"e1", "e2", "e32", "e14"}}
 	//indexOf example
 	fmt.Println(test1.IndexOf("e2"))
+	fmt.Println(test1.IndexOfParallel("e1"))
 	//filter example
 	fmt.Println(test1.Filter(func(i interface{}) bool {
 		return len(i.(string)) > 2
